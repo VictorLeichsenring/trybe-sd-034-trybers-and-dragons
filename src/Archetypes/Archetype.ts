@@ -4,17 +4,11 @@ abstract class Archetype {
   private _name: string;
   private _special: number;
   private _cost: number;
-  private static _createdArchetypeInstances = 0;
 
   constructor(name: string) {
     this._name = name;
     this._special = 0;
     this._cost = 0;
-    Archetype._createdArchetypeInstances += 1;
-  }
-
-  static get createdArchetypeInstances(): number {
-    throw new Error('Not implemented');
   }
 
   get name(): string {
