@@ -1,18 +1,10 @@
-// src/Races/Race.ts
-
 abstract class Race {
-  private static _createdRacesInstances = 0;
   private _name: string;
   private _dexterity: number;
 
   constructor(name: string, dexterity: number) {
     this._name = name;
     this._dexterity = dexterity;
-    Race._createdRacesInstances += 1;
-  }
-
-  static get createdRacesInstances(): never {
-    throw new Error('Not implemented');
   }
 
   get name(): string {
@@ -21,6 +13,10 @@ abstract class Race {
 
   get dexterity(): number {
     return this._dexterity;
+  }
+
+  static createdRacesInstances(): number {
+    throw new Error('Not implemented');
   }
 
   abstract get maxLifePoints(): number;
