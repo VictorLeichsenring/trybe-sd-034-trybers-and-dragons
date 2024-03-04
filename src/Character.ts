@@ -5,6 +5,7 @@ import Fighter from './Fighter/Fighter';
 import getRandomInt from './utils';
 import Elf from './Races/Elf';
 import Mage from './Archetypes/Mage';
+import { SimpleFighter } from './Fighter';
 
 class Character implements Fighter {
   private _race: Race;
@@ -40,11 +41,11 @@ class Character implements Fighter {
     return { ...this._energy };
   }
 
-  attack(enemy: Fighter): void {
+  attack(enemy: Fighter | SimpleFighter): void {
     enemy.receiveDamage(this._strength);
   }
 
-  special(enemy: Fighter): void {
+  special(enemy: Fighter | SimpleFighter): void {
     if (this._energy.amount > 1) {
       const specialAttackStrength = this._strength * 1.5; // 50% mais forte que o ataque normal
       this._energy.amount -= 1; // Consome um ponto adicional de energia
